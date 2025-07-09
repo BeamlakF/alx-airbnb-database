@@ -1,4 +1,3 @@
--- User Roles table to normalize roles (3NF)
 CREATE TABLE UserRole (
     role_name ENUM('guest', 'host', 'admin') PRIMARY KEY,
     description VARCHAR(255) NULL
@@ -6,7 +5,7 @@ CREATE TABLE UserRole (
 
 -- Users table
 CREATE TABLE User (
-    user_id CHAR(20) PRIMARY KEY, 
+    user_id AUTO_INCREMENT CHAR(20) PRIMARY KEY, 
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
@@ -21,7 +20,7 @@ CREATE INDEX idx_user_email ON User(email);
 
 -- Properties table
 CREATE TABLE Property (
-    property_id CHAR(36) PRIMARY KEY,
+    property_id AUTO_INCREMENT CHAR(36) PRIMARY KEY,
     host_id CHAR(36) NOT NULL,
     name VARCHAR(255) NOT NULL,
     description TEXT NOT NULL,
@@ -36,7 +35,7 @@ CREATE INDEX idx_property_host ON Property(host_id);
 
 -- Bookings table
 CREATE TABLE Booking (
-    booking_id CHAR(36) PRIMARY KEY,
+    booking_id AUTO_INCREMENT CHAR(36) PRIMARY KEY,
     property_id CHAR(36) NOT NULL,
     user_id CHAR(36) NOT NULL,
     start_date DATE NOT NULL,
